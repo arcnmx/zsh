@@ -6272,11 +6272,11 @@ quotestring(const char *s, int instring)
 		continue;
 	    }
 	    else if (ispecial(*u) &&
-		     ((*u != '=' && *u != '~') ||
+		     ((*u != '=' && *u != '~' && *u != '#' && *u != '^') ||
 		      u == s ||
 		      (isset(MAGICEQUALSUBST) &&
-		       (u[-1] == '=' || u[-1] == ':')) ||
-		      (*u == '~' && isset(EXTENDEDGLOB))) &&
+		       (u[-1] == '=' || u[-1] == ':'))
+		     ) &&
 		     (instring == QT_BACKSLASH ||
 		      instring == QT_SINGLE_OPTIONAL ||
 		      (isset(BANGHIST) && *u == (char)bangchar &&
